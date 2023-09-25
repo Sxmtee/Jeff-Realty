@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:jeffrealty/Common/Utils/app_dialogs.dart';
 import 'package:jeffrealty/Common/Utils/color.dart';
 import 'package:jeffrealty/Common/Utils/dimensions.dart';
+import 'package:jeffrealty/Features/SideMenu/screens/about_screen.dart';
+import 'package:jeffrealty/Features/SideMenu/screens/purchase_guide_screen.dart';
 import 'package:jeffrealty/Features/SideMenu/widgets/info_card.dart';
 import 'package:jeffrealty/Features/SideMenu/widgets/side_menu_tile.dart';
 
@@ -34,7 +36,9 @@ class _SideMenuState extends State<SideMenu> {
             ),
           ),
           SideMenuTile(
-            onTap: () {},
+            onTap: () => Navigator.of(context).pushNamed(
+              AboutScreen.routeName,
+            ),
             icon: const Icon(
               Icons.info_rounded,
               color: AppColors.white,
@@ -42,12 +46,14 @@ class _SideMenuState extends State<SideMenu> {
             text: "About",
           ),
           SideMenuTile(
-            onTap: () {},
+            onTap: () => Navigator.of(context).pushNamed(
+              PurchaseGuide.routeName,
+            ),
             icon: const Icon(
               Icons.route_rounded,
               color: AppColors.white,
             ),
-            text: "Lengora Business",
+            text: "Purchase guide",
           ),
           SideMenuTile(
             onTap: () {
