@@ -1,15 +1,15 @@
-class House {
+class Land {
   int id;
-  HouseAttributes attributes;
+  LandAttributes attributes;
 
-  House({
+  Land({
     required this.id,
     required this.attributes,
   });
 
-  factory House.fromJson(Map<String, dynamic> json) => House(
+  factory Land.fromJson(Map<String, dynamic> json) => Land(
         id: json["id"],
-        attributes: HouseAttributes.fromJson(json["attributes"]),
+        attributes: LandAttributes.fromJson(json["attributes"]),
       );
 
   Map<String, dynamic> toJson() => {
@@ -18,17 +18,16 @@ class House {
       };
 }
 
-class HouseAttributes {
+class LandAttributes {
+  String title;
   String price;
-  String status;
   String state;
   String lga;
   String landmark;
-  String title;
-  String bedroom;
-  String bathroom;
-  String streetName;
   String city;
+  String streetName;
+  bool cofO;
+  String landSize;
   dynamic latitude;
   dynamic longititude;
   DateTime createdAt;
@@ -36,17 +35,16 @@ class HouseAttributes {
   DateTime publishedAt;
   Images images;
 
-  HouseAttributes({
+  LandAttributes({
+    required this.title,
     required this.price,
-    required this.status,
     required this.state,
     required this.lga,
     required this.landmark,
-    required this.title,
-    required this.bedroom,
-    required this.bathroom,
-    required this.streetName,
     required this.city,
+    required this.streetName,
+    required this.cofO,
+    required this.landSize,
     required this.latitude,
     required this.longititude,
     required this.createdAt,
@@ -55,18 +53,16 @@ class HouseAttributes {
     required this.images,
   });
 
-  factory HouseAttributes.fromJson(Map<String, dynamic> json) =>
-      HouseAttributes(
+  factory LandAttributes.fromJson(Map<String, dynamic> json) => LandAttributes(
+        title: json["title"],
         price: json["price"],
-        status: json["status"],
         state: json["state"],
         lga: json["LGA"],
         landmark: json["landmark"],
-        title: json["title"],
-        bedroom: json["bedroom"],
-        bathroom: json["bathroom"],
-        streetName: json["streetName"],
         city: json["city"],
+        streetName: json["streetName"],
+        cofO: json["CofO"],
+        landSize: json["landSize"],
         latitude: json["latitude"],
         longititude: json["longititude"],
         createdAt: DateTime.parse(json["createdAt"]),
@@ -76,16 +72,15 @@ class HouseAttributes {
       );
 
   Map<String, dynamic> toJson() => {
+        "title": title,
         "price": price,
-        "status": status,
         "state": state,
         "LGA": lga,
         "landmark": landmark,
-        "title": title,
-        "bedroom": bedroom,
-        "bathroom": bathroom,
-        "streetName": streetName,
         "city": city,
+        "streetName": streetName,
+        "CofO": cofO,
+        "landSize": landSize,
         "latitude": latitude,
         "longititude": longititude,
         "createdAt": createdAt.toIso8601String(),

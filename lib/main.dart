@@ -24,6 +24,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeProvider = ref.watch(themesProvider);
+
     return MaterialApp(
       title: 'Jeff Realty',
       debugShowCheckedModeBanner: false,

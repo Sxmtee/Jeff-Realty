@@ -32,7 +32,7 @@ class AboutScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Our Team",
+                "About Us",
                 style: TextStyle(
                   color: AppColors.textColor,
                   fontWeight: FontWeight.bold,
@@ -43,17 +43,6 @@ class AboutScreen extends StatelessWidget {
                 height: Sizes.sHeight,
               ),
               TeamView(),
-              SizedBox(
-                height: Sizes.sHeight * 4,
-              ),
-              const Text(
-                "About Us",
-                style: TextStyle(
-                  color: AppColors.textColor,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
-              ),
               SizedBox(
                 height: Sizes.sHeight,
               ),
@@ -88,6 +77,20 @@ class AboutScreen extends StatelessWidget {
                   color: AppColors.textColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 20,
+                ),
+              ),
+              SizedBox(
+                height: Sizes.sHeight,
+              ),
+              Container(
+                height: Sizes.sHeight * 31.25,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  image: const DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage("assets/images/shake_hand.webp"),
+                  ),
                 ),
               ),
               SizedBox(

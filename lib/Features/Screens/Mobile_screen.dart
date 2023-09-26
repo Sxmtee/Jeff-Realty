@@ -4,9 +4,9 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:jeffrealty/Common/Utils/color.dart';
 import 'package:jeffrealty/Common/Utils/dimensions.dart';
-import 'package:jeffrealty/Features/Property/Contact_screen.dart';
-import 'package:jeffrealty/Features/Property/Houses_screen.dart';
-import 'package:jeffrealty/Features/Property/Land_screen.dart';
+import 'package:jeffrealty/Features/Property/screens/Contact_screen.dart';
+import 'package:jeffrealty/Features/Property/screens/Houses_screen.dart';
+import 'package:jeffrealty/Features/Property/screens/Land_screen.dart';
 import 'package:jeffrealty/Features/SideMenu/screens/sidemenu.dart';
 
 class MobileScreen extends StatefulWidget {
