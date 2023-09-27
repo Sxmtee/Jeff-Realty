@@ -5,6 +5,7 @@ import 'package:jeffrealty/Common/Utils/color.dart';
 import 'package:jeffrealty/Common/Utils/dimensions.dart';
 import 'package:jeffrealty/Features/SideMenu/screens/about_screen.dart';
 import 'package:jeffrealty/Features/SideMenu/screens/purchase_guide_screen.dart';
+import 'package:jeffrealty/Features/SideMenu/widgets/business_card.dart';
 import 'package:jeffrealty/Features/SideMenu/widgets/info_card.dart';
 import 'package:jeffrealty/Features/SideMenu/widgets/side_menu_tile.dart';
 
@@ -75,6 +76,10 @@ class _SideMenuState extends State<SideMenu> {
             ),
             text: "Exit app",
           ),
+          SizedBox(
+            height: Sizes.sHeight * 2,
+          ),
+          const BusinessCard()
         ],
       ),
     );

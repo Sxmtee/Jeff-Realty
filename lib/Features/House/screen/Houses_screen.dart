@@ -5,8 +5,8 @@ import 'package:jeffrealty/Common/Utils/dimensions.dart';
 import 'package:jeffrealty/Common/Utils/loader.dart';
 import 'package:jeffrealty/Common/Widgets/error_screen.dart';
 import 'package:jeffrealty/Common/Widgets/statusbar.dart';
-import 'package:jeffrealty/Features/Property/repo/house_repo.dart';
-import 'package:jeffrealty/Features/Property/widgets/house_card.dart';
+import 'package:jeffrealty/Features/House/repo/house_repo.dart';
+import 'package:jeffrealty/Features/House/widgets/house_card.dart';
 import 'package:jeffrealty/Model/house_model.dart';
 
 class HousesScreen extends ConsumerWidget {
