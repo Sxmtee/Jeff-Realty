@@ -26,13 +26,35 @@ class _ContactScreenState extends State<ContactScreen> {
   final TextEditingController convoCtrl = TextEditingController();
   final GlobalKey<FormState> authKey = GlobalKey<FormState>();
 
+  String emailAddress = "somtoo76@gmail.com";
+
   void launchWhatsapp() async {
-    const phoneNumber = "+2347031250097";
+    const phoneNumber = "+2348120908844";
     final whatsappUrl = Uri.parse("https://wa.me/$phoneNumber");
     if (await canLaunchUrl(whatsappUrl)) {
       await launchUrl(whatsappUrl, mode: LaunchMode.externalApplication);
     } else {
       showSnackBar(context, "Can't launch whatsapp");
+    }
+  }
+
+  void launchInstagram() async {
+    final instagramUrl = Uri.parse(
+      "https://instagram.com/jefftradesolutions_?igshid=NTc4MTIwNjQ2YQ==",
+    );
+    if (await canLaunchUrl(instagramUrl)) {
+      await launchUrl(instagramUrl, mode: LaunchMode.externalApplication);
+    } else {
+      showSnackBar(context, "Can't launch Instagram");
+    }
+  }
+
+  void launchEmail() async {
+    final mail = Uri.parse("mailto:$emailAddress");
+    if (await canLaunchUrl(mail)) {
+      await launchUrl(mail);
+    } else {
+      showSnackBar(context, 'Could not launch email');
     }
   }
 
@@ -98,22 +120,21 @@ class _ContactScreenState extends State<ContactScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     IconBox(
-                      onPressed: () {
-                        launchWhatsapp();
-                      },
+                      onPressed: launchWhatsapp,
                       icon: const Icon(
                         FontAwesomeIcons.whatsapp,
                         color: Colors.green,
                       ),
                     ),
                     IconBox(
-                      onPressed: () {},
+                      onPressed: launchEmail,
                       icon: const Icon(
                         Icons.mail,
+                        color: AppColors.button,
                       ),
                     ),
                     IconBox(
-                      onPressed: () {},
+                      onPressed: launchInstagram,
                       icon: const Icon(
                         FontAwesomeIcons.instagram,
                         color: Colors.red,

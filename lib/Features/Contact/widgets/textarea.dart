@@ -4,11 +4,8 @@ class TextAreas extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final TextInputType? keyboard;
-  final FocusNode? focusNode;
-  final int? maxLine, minLine, maxLength;
-  final void Function(String)? onChanged;
-  final void Function()? onTap;
-  final InputBorder? border;
+  final int? maxLine;
+  final int? minLine;
   const TextAreas({
     super.key,
     required this.controller,
@@ -16,11 +13,6 @@ class TextAreas extends StatelessWidget {
     this.keyboard,
     this.maxLine,
     this.minLine,
-    this.maxLength,
-    this.onChanged,
-    this.onTap,
-    this.border,
-    this.focusNode,
   });
 
   @override
@@ -28,22 +20,15 @@ class TextAreas extends StatelessWidget {
     return TextFormField(
       controller: controller,
       keyboardType: keyboard,
-      maxLength: maxLength,
-      focusNode: focusNode,
       minLines: minLine,
       maxLines: maxLine,
-      decoration: InputDecoration(
-        hintText: hintText,
-        border: border,
-      ),
+      decoration: InputDecoration(hintText: hintText),
       validator: (value) {
         if (value!.isEmpty) {
           return "Please fill this field";
         }
         return null;
       },
-      onChanged: onChanged,
-      onTap: onTap,
     );
   }
 }
