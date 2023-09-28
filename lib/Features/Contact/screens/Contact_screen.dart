@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:jeffrealty/Common/Utils/color.dart';
@@ -26,7 +27,7 @@ class _ContactScreenState extends State<ContactScreen> {
   final TextEditingController convoCtrl = TextEditingController();
   final GlobalKey<FormState> authKey = GlobalKey<FormState>();
 
-  String emailAddress = "somtoo76@gmail.com";
+  String emailAddress = "services@jeff-realty.com";
 
   void launchWhatsapp() async {
     const phoneNumber = "+2348120908844";
@@ -55,6 +56,29 @@ class _ContactScreenState extends State<ContactScreen> {
       await launchUrl(mail);
     } else {
       showSnackBar(context, 'Could not launch email');
+    }
+  }
+
+  void launchUserEmailApp() async {
+    final recipientEmail = emailAddress;
+    const subject = 'Contact Form Submission';
+    final body = '''
+    Name: ${nameCtrl.text}
+    Email: ${emailCtrl.text}
+    Phone Number: ${phoneCtrl.text}
+    Company: ${companyCtrl.text}
+    Conversation:
+    ${convoCtrl.text}
+  ''';
+
+    final mailtoLink = 'mailto:$recipientEmail?subject=$subject&body=$body';
+
+    final uri = Uri.parse(mailtoLink);
+
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      showSnackBar(context, 'Could not launch email app');
     }
   }
 
@@ -159,6 +183,12 @@ class _ContactScreenState extends State<ContactScreen> {
                 TextAreas(
                   controller: nameCtrl,
                   hintText: "Enter your name",
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please fill this field";
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(
                   height: Sizes.sHeight * 2,
@@ -176,7 +206,15 @@ class _ContactScreenState extends State<ContactScreen> {
                 ),
                 TextAreas(
                   controller: emailCtrl,
+                  keyboard: TextInputType.emailAddress,
                   hintText: "Enter your mail",
+                  validator: (value) {
+                    var emailValid = EmailValidator.validate(value!);
+                    if (!emailValid) {
+                      return "Please enter a valid email";
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(
                   height: Sizes.sHeight * 2,
@@ -196,6 +234,12 @@ class _ContactScreenState extends State<ContactScreen> {
                   controller: phoneCtrl,
                   keyboard: TextInputType.phone,
                   hintText: "Enter your Phone Number",
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please fill this field";
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(
                   height: Sizes.sHeight * 2,
@@ -214,6 +258,12 @@ class _ContactScreenState extends State<ContactScreen> {
                 TextAreas(
                   controller: companyCtrl,
                   hintText: "Enter your Company's name",
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please fill this field";
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(
                   height: Sizes.sHeight * 2,
@@ -234,13 +284,26 @@ class _ContactScreenState extends State<ContactScreen> {
                   maxLine: 8,
                   controller: convoCtrl,
                   hintText: "Tell us something",
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Please fill this field";
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(
                   height: Sizes.sHeight * 2,
                 ),
                 ButtonText(
                   onpressed: () {
-                    if (authKey.currentState!.validate()) {}
+                    if (authKey.currentState!.validate()) {
+                      launchUserEmailApp();
+                      nameCtrl.clear();
+                      emailCtrl.clear();
+                      phoneCtrl.clear();
+                      companyCtrl.clear();
+                      convoCtrl.clear();
+                    }
                   },
                   text: "Submit",
                 ),

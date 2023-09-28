@@ -83,7 +83,7 @@ class TeamView extends StatelessWidget {
         },
       ).toList(),
       options: CarouselOptions(
-        height: 250,
+        height: Sizes.sHeight * 31.25,
         autoPlay: true,
         enlargeCenterPage: true,
       ),

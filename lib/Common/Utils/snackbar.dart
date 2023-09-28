@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 showSnackBar(BuildContext context, String content) {
   AnimatedSnackBar(
+    duration: const Duration(seconds: 10),
     builder: (context) {
       return Container(
         padding: const EdgeInsets.all(8),

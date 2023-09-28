@@ -47,7 +47,7 @@ dependencies:
   cached_network_image: ^3.3.0
   font_awesome_flutter: ^10.5.0
   url_launcher: ^6.1.14
-  mailer: ^6.0.1
+  email_validator: ^2.1.17
   flutter_launcher_icons: ^0.13.1
 
 flutter_launcher_icons:
