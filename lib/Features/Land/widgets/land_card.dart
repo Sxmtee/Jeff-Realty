@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:jeffrealty/Common/Utils/color.dart';
 import 'package:jeffrealty/Common/Utils/dimensions.dart';
 import 'package:jeffrealty/Features/Land/screen/land_full_screen.dart';
@@ -7,7 +8,19 @@ import 'package:jeffrealty/Model/land_model.dart';
 
 class LandCard extends StatelessWidget {
   final Land lands;
-  const LandCard({super.key, required this.lands});
+  LandCard({super.key, required this.lands});
+
+  final NumberFormat _numberFormat = NumberFormat('#,###');
+
+  String _formatNumber(String input) {
+    try {
+      int number = int.parse(input.replaceAll(',', ''));
+      String formattedNumber = _numberFormat.format(number);
+      return formattedNumber;
+    } catch (e) {
+      return input;
+    }
+  }
 
   String capitalizeFirstLetter(String text) {
     if (text.isEmpty) {
@@ -49,12 +62,26 @@ class LandCard extends StatelessWidget {
               SizedBox(
                 height: Sizes.sHeight * 2,
               ),
-              Text(
-                "NGN ${lands.attributes.price}",
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.textColor,
-                ),
+              Row(
+                children: [
+                  const Text(
+                    "NGN",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textColor,
+                    ),
+                  ),
+                  SizedBox(
+                    width: Sizes.sWidth,
+                  ),
+                  Text(
+                    _formatNumber(lands.attributes.price),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textColor,
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
                 height: Sizes.sHeight * 2,

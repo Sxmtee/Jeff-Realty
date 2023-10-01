@@ -1,10 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:jeffrealty/Common/Widgets/details_card.dart';
 import 'package:jeffrealty/Model/house_model.dart';
 
 class HouseDetail extends StatelessWidget {
   final House house;
-  const HouseDetail({super.key, required this.house});
+  HouseDetail({super.key, required this.house});
+
+  final NumberFormat _numberFormat = NumberFormat('#,###');
+
+  String _formatNumber(String input) {
+    try {
+      int number = int.parse(input.replaceAll(',', ''));
+      String formattedNumber = _numberFormat.format(number);
+      return formattedNumber;
+    } catch (e) {
+      return input;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +25,7 @@ class HouseDetail extends StatelessWidget {
       children: [
         DetailsCard(
           heading: "Price",
-          detail: house.attributes.price,
+          detail: _formatNumber(house.attributes.price),
         ),
         DetailsCard(
           heading: "Status",
