@@ -123,7 +123,7 @@ class LandCard extends StatelessWidget {
                       SizedBox(
                         width: Sizes.sWidth * 2,
                       ),
-                      const Text("sqft")
+                      const Text("SqFt")
                     ],
                   ),
                   if (lands.attributes.cofO)

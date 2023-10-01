@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jeffrealty/Common/Utils/color.dart';
-import 'package:jeffrealty/Features/House/widgets/house_map_screen.dart';
 import 'package:jeffrealty/Features/Land/widgets/land_detail.dart';
+import 'package:jeffrealty/Features/Land/widgets/land_map_screen.dart';
 import 'package:jeffrealty/Model/land_model.dart';
 
 class LandTabScreen extends StatelessWidget {
@@ -34,7 +34,7 @@ class LandTabScreen extends StatelessWidget {
         body: TabBarView(
           children: [
             LandDetail(land: land),
-            const HouseMapScreen(),
+            LandMapScreen(land: land),
           ],
         ),
       ),

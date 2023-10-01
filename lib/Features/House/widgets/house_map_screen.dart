@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:jeffrealty/Common/Utils/color.dart';
 import 'package:jeffrealty/Common/Utils/dimensions.dart';
 import 'package:jeffrealty/Common/Utils/loader.dart';
+import 'package:jeffrealty/Model/house_model.dart';
 
 class HouseMapScreen extends StatelessWidget {
-  const HouseMapScreen({super.key});
+  final House house;
+  const HouseMapScreen({super.key, required this.house});
 
   @override
   Widget build(BuildContext context) {

@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:jeffrealty/Common/Utils/color.dart';
 import 'package:jeffrealty/Common/Utils/dimensions.dart';
 import 'package:jeffrealty/Common/Utils/loader.dart';
+import 'package:jeffrealty/Model/land_model.dart';
 
 class LandMapScreen extends StatelessWidget {
-  const LandMapScreen({super.key});
+  final Land land;
+  const LandMapScreen({super.key, required this.land});
 
   @override
   Widget build(BuildContext context) {

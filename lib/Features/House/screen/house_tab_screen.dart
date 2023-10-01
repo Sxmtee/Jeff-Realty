@@ -34,7 +34,7 @@ class HouseTabScreen extends StatelessWidget {
         body: TabBarView(
           children: [
             HouseDetail(house: house),
-            const HouseMapScreen(),
+            HouseMapScreen(house: house),
           ],
         ),
       ),

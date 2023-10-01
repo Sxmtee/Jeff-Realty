@@ -40,7 +40,9 @@ class HousesScreen extends ConsumerWidget {
               );
             }
             if (snapshot.hasError) {
-              return ErrorScreen(error: snapshot.error.toString());
+              return const Center(
+                child: Loader(),
+              );
             }
             if (!snapshot.hasData) {
               return const ErrorScreen(error: "No Data");
